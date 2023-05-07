@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from 'components/App/App';
-import './index.css';
-// import { theme } from 'Constants/Theme';
+import { Global, ThemeProvider } from '@emotion/react';
+import { globalStyles } from 'styled/globalStyles';
+import './styled/index.css';
+import { theme } from 'styled/Theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+      <Global styles={globalStyles} />
+    </ThemeProvider>
   </React.StrictMode>
 );
