@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import PropTypes from 'prop-types';
 import { toast } from 'react-hot-toast';
+import {
+  SearchbarWrap,
+  SearchForm,
+  SearchFormButton,
+  SearchFormInput,
+} from 'components/Searchbar/Searchbar.styled';
 
 class Searchbar extends Component {
   static propTypes = {
@@ -30,13 +36,13 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header>
-        <form onSubmit={this.handleSubmit}>
-          <button type="submit">
-            <BiSearch />
-          </button>
+      <SearchbarWrap>
+        <SearchForm onSubmit={this.handleSubmit}>
+          <SearchFormButton type="submit">
+            <BiSearch fontSize="20" />
+          </SearchFormButton>
 
-          <input
+          <SearchFormInput
             type="text"
             value={this.state.value}
             onChange={this.onInputChange}
@@ -44,8 +50,8 @@ class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
           />
-        </form>
-      </header>
+        </SearchForm>
+      </SearchbarWrap>
     );
   }
 }
