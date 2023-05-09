@@ -28,7 +28,7 @@ class App extends Component {
       this.setState({ loading: true });
       try {
         const response = await fetchApi(nextName, nextPage);
-        console.log(response);
+
         if (response.hits.length === 0) {
           throw new Error();
         }
