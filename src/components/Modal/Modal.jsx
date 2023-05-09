@@ -9,7 +9,6 @@ export default class ModalImg extends Component {
   static propTypes = {
     largeImageURL: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
   };
 
   componentDidMount() {

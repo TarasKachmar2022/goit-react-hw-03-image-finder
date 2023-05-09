@@ -12,7 +12,6 @@ class ImageGalleryItem extends Component {
       webformatURL: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
       tags: PropTypes.string.isRequired,
-      onClose: PropTypes.func.isRequired,
     }).isRequired,
   };
 

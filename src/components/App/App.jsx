@@ -18,24 +18,20 @@ class App extends Component {
   };
 
   async componentDidUpdate(_, prevState) {
-    const prevName = prevState.searchName;
-    const nextName = this.state.searchName;
-    const prevPage = prevState.page;
-    const nextPage = this.state.page;
-    const prevImages = this.state.items;
+    const { page, searchName } = this.state;
 
-    if (prevName !== nextName || prevPage !== nextPage) {
+    if (prevState.page !== page || prevState.searchName !== searchName) {
       this.setState({ loading: true });
       try {
-        const response = await fetchApi(nextName, nextPage);
+        const response = await fetchApi(searchName, page);
 
         if (response.hits.length === 0) {
           throw new Error();
         }
-        this.setState({
-          items: [...prevImages, ...response.hits],
-          pageQuantity: Math.ceil(response.totalHits / 12),
-        });
+        this.setState(prevState => ({
+          items: [...prevState.items, ...response.hits],
+          pageQuantity: Math.ceil(response.totalHits / response.perPage),
+        }));
       } catch (error) {
         this.setState({
           error: toast.error('Щось пішло не так... Спробуйте ще раз!'),
@@ -57,8 +53,7 @@ class App extends Component {
   };
 
   render() {
-    const { loading, error, page, pageQuantity } = this.state;
-    const images = this.state.items;
+    const { loading, error, page, pageQuantity, items: images } = this.state;
     return (
       <Layout>
         <Searchbar onSubmit={this.formHandlerSubmit} />
