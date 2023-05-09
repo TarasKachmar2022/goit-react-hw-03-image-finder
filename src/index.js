@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from 'components/App/App';
+import App from 'components/App';
 import { Global, ThemeProvider } from '@emotion/react';
 import { globalStyles } from 'styled/globalStyles';
 import './styled/index.css';

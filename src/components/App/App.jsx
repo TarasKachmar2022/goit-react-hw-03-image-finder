@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
-import { Layout } from 'components/Layout/Layout';
-import fetchApi from 'components/ApiService/ApiService';
-import Searchbar from 'components/Searchbar/Searchbar';
-import ImageGallery from 'components/ImageGallery/ImageGallery';
-import LoadMoreBtn from 'components/Button/Button';
-import Loader from 'components/Loader/Loader';
+import Layout from 'components/Layout';
+import fetchApi from 'components/ApiService';
+import Searchbar from 'components/Searchbar';
+import ImageGallery from 'components/ImageGallery';
+import LoadMoreBtn from 'components/Button';
+import Loader from 'components/Loader';
 
 class App extends Component {
   state = {

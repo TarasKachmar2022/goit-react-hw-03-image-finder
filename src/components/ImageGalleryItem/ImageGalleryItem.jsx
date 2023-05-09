@@ -4,7 +4,7 @@ import {
   ImageGalleryLi,
   ImageGalleryItemImage,
 } from 'components/ImageGalleryItem/ImageGalleryItem.styled';
-import ModalImg from 'components/Modal/Modal';
+import ModalImg from 'components/Modal';
 
 class ImageGalleryItem extends Component {
   static propTypes = {
