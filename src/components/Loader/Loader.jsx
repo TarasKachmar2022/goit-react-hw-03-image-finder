@@ -1,13 +1,25 @@
+import { Component } from 'react';
+import { createPortal } from 'react-dom';
 import { Vortex } from 'react-loader-spinner';
+import { LoaderWrap } from 'components/Loader/Loader.styled';
 
-<Vortex
-  visible={true}
-  height="80"
-  width="80"
-  ariaLabel="vortex-loading"
-  wrapperStyle={{}}
-  wrapperClass="vortex-wrapper"
-  colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-/>;
+const rootloader = document.querySelector('#rootLoader');
 
-export default Vortex;
+export default class Loader extends Component {
+  render() {
+    return createPortal(
+      <LoaderWrap>
+        <Vortex
+          type="watch"
+          visible={true}
+          height="100"
+          width="100"
+          ariaLabel="vortex-loading"
+          wrapperStyle={{}}
+          colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+        />
+      </LoaderWrap>,
+      rootloader
+    );
+  }
+}

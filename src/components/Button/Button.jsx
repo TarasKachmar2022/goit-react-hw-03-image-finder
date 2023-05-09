@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import { MoreBtn } from 'components/Button/Button.styled';
+import { BtnContsiner, MoreBtn } from 'components/Button/Button.styled';
 
 const LoadMoreBtn = ({ addPage }) => {
   return (
-    <div>
+    <BtnContsiner>
       <MoreBtn type="button" onClick={addPage}>
         Load More
       </MoreBtn>
-    </div>
+    </BtnContsiner>
   );
 };
 

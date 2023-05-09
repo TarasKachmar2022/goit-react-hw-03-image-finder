@@ -32,7 +32,6 @@ class App extends Component {
         if (response.hits.length === 0) {
           throw new Error();
         }
-
         this.setState({
           items: [...prevImages, ...response.hits],
           pageQuantity: Math.ceil(response.totalHits / 12),
@@ -58,15 +57,17 @@ class App extends Component {
   };
 
   render() {
-    const { loading } = this.state;
+    const { loading, error, page, pageQuantity } = this.state;
     const images = this.state.items;
     return (
       <Layout>
         <Searchbar onSubmit={this.formHandlerSubmit} />
-        <Toaster position="top-right" />
+        {error !== null && <Toaster position="top-right" />}
         <ImageGallery items={images} />
+        {page < pageQuantity && (
+          <LoadMoreBtn addPage={this.onChangePageNumber} />
+        )}
         {loading && <Loader />}
-        <LoadMoreBtn addPage={this.onChangePageNumber} />
       </Layout>
     );
   }

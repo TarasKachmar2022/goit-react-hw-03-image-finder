@@ -8,6 +8,7 @@ import {
   SearchFormButton,
   SearchFormInput,
 } from 'components/Searchbar/Searchbar.styled';
+import { Toaster } from 'react-hot-toast';
 
 class Searchbar extends Component {
   static propTypes = {
@@ -37,6 +38,7 @@ class Searchbar extends Component {
   render() {
     return (
       <SearchbarWrap>
+        <Toaster position="top-right" />
         <SearchForm onSubmit={this.handleSubmit}>
           <SearchFormButton type="submit">
             <BiSearch fontSize="20" />

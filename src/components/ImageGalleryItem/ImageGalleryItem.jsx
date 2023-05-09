@@ -4,6 +4,7 @@ import {
   ImageGalleryLi,
   ImageGalleryItemImage,
 } from 'components/ImageGalleryItem/ImageGalleryItem.styled';
+import ModalImg from 'components/Modal/Modal';
 
 class ImageGalleryItem extends Component {
   static propTypes = {
@@ -11,15 +12,36 @@ class ImageGalleryItem extends Component {
       webformatURL: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
       tags: PropTypes.string.isRequired,
+      onClose: PropTypes.func.isRequired,
     }).isRequired,
+  };
+
+  state = {
+    showModal: false,
+    imgForModal: '',
+  };
+
+  showLargeImage = img => {
+    this.setState(prevState => ({ showModal: !prevState.showModal }));
+    this.setState({ imgForModal: img });
   };
 
   render() {
     const { tags, webformatURL, largeImageURL } = this.props.item;
+    const { showModal, imgForModal } = this.state;
     return (
-      <ImageGalleryLi>
-        <ImageGalleryItemImage src={webformatURL} alt={tags} />
-      </ImageGalleryLi>
+      <>
+        <ImageGalleryLi onClick={() => this.showLargeImage(largeImageURL)}>
+          <ImageGalleryItemImage src={webformatURL} alt={tags} />
+        </ImageGalleryLi>
+        {showModal && (
+          <ModalImg
+            largeImageURL={imgForModal}
+            tags={tags}
+            onClose={this.showLargeImage}
+          />
+        )}
+      </>
     );
   }
 }
